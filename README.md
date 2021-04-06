@@ -51,7 +51,7 @@ Group #3 Project: Yuumi.GG League of Legends Statistics Comparison for Android
 * [Head to Head Screen]
    * [*User can recieve information about their games.]
 * [Summoner Data II (Extended Info)]
-	* [*User can view their recent 20 games or other Summoners 20 games.]
+    * [*User can view their recent 20 games or other Summoners 20 games.]
    
 
 ### 3. Navigation
@@ -64,8 +64,8 @@ Group #3 Project: Yuumi.GG League of Legends Statistics Comparison for Android
 * [Head to Head]
 
 Optional:
-	* [Challenges Tab]
-	* [Flexible Head to Head tab (updated)]
+    * [Challenges Tab]
+    * [Flexible Head to Head tab (updated)]
 
 **Flow Navigation** (Screen to Screen)
 
@@ -83,10 +83,26 @@ Optional:
 ### [BONUS] Interactive Prototype
 
 ## Schema 
-[This section will be completed in Unit 9]
-### Models
-[Add table of models]
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | username      | String   | Name identifies each summoner |
+   | Summoner Count| Integer| Number ID of summoner signed in |
+   | Summoner rank  | String     | Indicated what rank Summoner(s) are |
+   | Summoner Level | String   | Indicate the Summoner level |
+   | SummonerIconID | Integer   |ID representing Summoner Icon image |
+   | ChampionID    | Integer   | Most played characters in game |
+   | AVGCS         | Integer | date when post is created (default field) |
+   | Winrate       | Integer | date when post is last updated (default field) |
 ### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+#### List of network requests by screen
+   - Summoner Lookup Screen
+      - (Read/GET) Query Summoner Account Data for basic view
+      - (Create/POST) Add a summoner to compare
+      - (Update/Put) Add an additional summoner
+   - Summoner Data Comparison
+      - (Read/GET) View Summoners data
+      - (Delete) Remove a summoner from comparison
+   - Summoner Info Screen
+      - (Read/GET) View Summoner info pulled from Summoner v4 API
+    - Side by Side In Depth Comparison
+    - (Read/GET) View Additional Summoner info pulled from Summoner v4 API in comparison with the other Summoner
