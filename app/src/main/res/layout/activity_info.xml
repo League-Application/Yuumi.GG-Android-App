@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvSecondSummonerLevelInt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="30"
+        app:layout_constraintStart_toEndOf="@+id/tvSecondSummonerLevel"
+        app:layout_constraintTop_toTopOf="@+id/tvSecondSummonerLevel" />
+
+    <TextView
+        android:id="@+id/tvSecondSummonerLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Level: "
+        app:layout_constraintStart_toStartOf="@+id/tvSecondSummonerName"
+        app:layout_constraintTop_toBottomOf="@+id/tvSecondSummonerRank" />
+
+    <TextView
+        android:id="@+id/tvSecondSummonerName"
+        android:layout_width="253dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="248dp"
+        android:text="Second Summoner Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFirstSummonerName" />
+
+    <TextView
+        android:id="@+id/tvSecondSummonerRank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rank"
+        app:layout_constraintStart_toStartOf="@+id/tvSecondSummonerName"
+        app:layout_constraintTop_toBottomOf="@+id/tvSecondSummonerName" />
+
+    <TextView
+        android:id="@+id/tvSecondSummonerLP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/tvSecondSummonerRank"
+        app:layout_constraintTop_toBottomOf="@+id/tvSecondSummonerName" />
+
+    <TextView
+        android:id="@+id/tvFirstSummonerName"
+        android:layout_width="253dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="72dp"
+        android:text="First Summoner Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvFirstSummonerRank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rank"
+        app:layout_constraintStart_toStartOf="@+id/tvFirstSummonerName"
+        app:layout_constraintTop_toBottomOf="@+id/tvFirstSummonerName" />
+
+    <TextView
+        android:id="@+id/tvFirstSummonerLP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/tvFirstSummonerRank"
+        app:layout_constraintTop_toTopOf="@+id/tvFirstSummonerRank" />
+
+    <TextView
+        android:id="@+id/tvFirstSummonerLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Level: "
+        app:layout_constraintStart_toStartOf="@+id/tvFirstSummonerRank"
+        app:layout_constraintTop_toBottomOf="@+id/tvFirstSummonerRank" />
+
+    <TextView
+        android:id="@+id/tvFirstSummonerLevelInt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="30"
+        app:layout_constraintStart_toEndOf="@+id/tvFirstSummonerLevel"
+        app:layout_constraintTop_toBottomOf="@+id/tvFirstSummonerLP" />
+
+    <ImageView
+        android:id="@+id/ivFirstSummonerIcon"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="4dp"
+        app:layout_constraintEnd_toStartOf="@+id/tvFirstSummonerName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvFirstSummonerName"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/ivSecondSummonerIcon"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="4dp"
+        app:layout_constraintEnd_toStartOf="@+id/tvSecondSummonerName"
+        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvSecondSummonerName"
+        tools:srcCompat="@tools:sample/avatars" />
+</androidx.constraintlayout.widget.ConstraintLayout>
