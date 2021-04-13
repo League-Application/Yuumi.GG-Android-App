@@ -1,23 +1,27 @@
 package com.LeagueApplication.YummiGG;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.LeagueApplication.YummiGG.Models.SummonerObject;
+import com.merakianalytics.orianna.Orianna;
+import com.merakianalytics.orianna.types.common.Region;
+import com.merakianalytics.orianna.types.core.summoner.Summoner;
 
+import org.parceler.Parcels;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.google.common.collect.ComparisonChain.start;
 
 public class InfoActivity extends AppCompatActivity {
 
-    TextView firstSummonerName, firstSummonerRank, firstSummonerLP, firstSummonerLevel;
-    TextView secondSummonerName, secondSummonerRank, secondSummonerLP, secondSummonerLevel;
-    SummonerObject[] summoners = SummonerStorage.getInstance().get();
-    public static final String TAG = "InfoActivity";
+    private final String TAG = "InfoActivity";
 
-    static int player = 0;
-    int firstSummoner = 0;
-    int secondSummoner = 1;
+    TextView firstSummonerName, secondSummonerName, firstSummonerRank, secondSummonerRank,
+            firstSummonerLP, secondSummonerLP, firstSummonerLevel, secondSummonerLevel;;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,38 +33,47 @@ public class InfoActivity extends AppCompatActivity {
         firstSummonerLP = findViewById(R.id.tvFirstSummonerLP);
         firstSummonerLevel = findViewById(R.id.tvFirstSummonerLevelInt);
 
-
         secondSummonerName = findViewById(R.id.tvSecondSummonerName);
         secondSummonerRank = findViewById(R.id.tvSecondSummonerRank);
         secondSummonerLP = findViewById(R.id.tvSecondSummonerLP);
         secondSummonerLevel = findViewById(R.id.tvSecondSummonerLevelInt);
 
-        firstSummonerName.setText(summoners[0].getName());
-        secondSummonerName.setText(summoners[1].getName());
+        setupOrianna();
+        //String[] summoners = new String[2];     //Unwrapping user input summoner names and adding them to a list //TODO add better handling for multiple summoners
 
-        firstSummonerLevel.setText(summoners[0].getSummonerLevel()+"");
-        secondSummonerLevel.setText(summoners[1].getSummonerLevel()+"");
+        String firstSummoner = Parcels.unwrap(getIntent().getParcelableExtra("firstSummoner"));
+        String secondSummoner = Parcels.unwrap(getIntent().getParcelableExtra("secondSummoner"));
 
-//        getPlayerRank(firstSummoner);
-//        getPlayerRank(secondSummoner);
-
-//        Log.i(TAG, "first and second rank reached");
-//        APIHandler handler = new APIHandler();
-//        JsonHttpResponseHandler jsonHttpResponseHandler = new JsonHttpResponseHandler() {
-//            @Override
-//            public void onSuccess(int statusCode, Headers headers, JSON json) {
-//
-//            }
-//
-//            @Override
-//            public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
-//
-//            }
-//        };
-//        handler.getRank(1, jsonHttpResponseHandler);
+        getSummonerName(firstSummoner, firstSummonerName);
+        getSummonerName(secondSummoner, secondSummonerName);
+        getSummonerLevel(firstSummoner, firstSummonerLevel);
+        getSummonerLevel(secondSummoner, secondSummonerLevel);
     }
 
-    private void getPlayerRank(int player) {
+    private void setupOrianna() {
+        Orianna.setRiotAPIKey(BuildConfig.API_KEY);
+        Orianna.setDefaultRegion(Region.NORTH_AMERICA);
+    }
 
+    private void getSummonerName(String summoner, TextView etSummonerName) {
+        OriannaHandler ori = new OriannaHandler(summoner);
+        ori.start();
+        try {
+            ori.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        etSummonerName.setText(ori.summonerName);
+    }
+
+    private void getSummonerLevel(String summoner, TextView etSummonerLevel) {
+        OriannaHandler ori = new OriannaHandler(summoner);
+        ori.start();
+        try {
+            ori.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        etSummonerLevel.setText(String.valueOf(ori.summonerLevel));
     }
 }

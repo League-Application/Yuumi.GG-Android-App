@@ -7,7 +7,7 @@
 
 
     <EditText
-        android:id="@+id/input_firstSummonerName"
+        android:id="@+id/etFirstSummonerName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="152dp"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/input_secondSummonerName"
+        android:id="@+id/etSecondSummonerName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="208dp"
@@ -38,6 +38,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="68dp"
         android:text="Submit"
-        app:layout_constraintEnd_toEndOf="@+id/input_firstSummonerName"
-        app:layout_constraintTop_toBottomOf="@+id/input_firstSummonerName" />
+        app:layout_constraintEnd_toEndOf="@+id/etFirstSummonerName"
+        app:layout_constraintTop_toBottomOf="@+id/etFirstSummonerName" />
 </androidx.constraintlayout.widget.ConstraintLayout>

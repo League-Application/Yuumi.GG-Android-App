@@ -40,7 +40,7 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    implementation 'com.github.taycaldwell:riot-api-java:4.3.0'
     implementation "com.merakianalytics.orianna:orianna-android:4.0.0-rc7"
-    implementation 'com.codepath.libraries:android-oauth-handler:2.2.0'
+    implementation 'org.parceler:parceler-api:1.1.12'
+    annotationProcessor 'org.parceler:parceler:1.1.12'
 }
