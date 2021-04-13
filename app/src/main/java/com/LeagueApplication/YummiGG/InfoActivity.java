@@ -48,6 +48,8 @@ public class InfoActivity extends AppCompatActivity {
         getSummonerName(secondSummoner, secondSummonerName);
         getSummonerLevel(firstSummoner, firstSummonerLevel);
         getSummonerLevel(secondSummoner, secondSummonerLevel);
+        getSummonerRankedSolo(firstSummoner, firstSummonerRank, firstSummonerLP);
+        getSummonerRankedSolo(secondSummoner, secondSummonerRank, secondSummonerLP);
     }
 
     private void setupOrianna() {
@@ -76,4 +78,18 @@ public class InfoActivity extends AppCompatActivity {
         }
         etSummonerLevel.setText(String.valueOf(ori.summonerLevel));
     }
+
+    private void getSummonerRankedSolo(String summoner, TextView etSummonerRank, TextView etSummonerLP) {
+        OriannaHandler ori = new OriannaHandler(summoner);
+        ori.start();
+        try {
+            ori.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Log.i(TAG, String.valueOf(ori.summonerRankedSolo.getLeaguePoints()));
+        etSummonerRank.setText(String.valueOf(ori.summonerRankedSolo.getTier()).substring(0, 1) + String.valueOf(ori.summonerRankedSolo.getTier()).substring(1).toLowerCase() + " " + ori.summonerRankedSolo.getDivision());
+        etSummonerLP.setText(ori.summonerRankedSolo.getLeaguePoints() + " LP");
+    }
+
 }
