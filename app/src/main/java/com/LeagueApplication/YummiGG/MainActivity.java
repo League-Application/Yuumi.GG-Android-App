@@ -3,6 +3,7 @@ package com.LeagueApplication.YummiGG;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         etFirstSummonerName = findViewById(R.id.etFirstSummonerName);             // reference variables to xml elements
         etSecondSummonerName = findViewById(R.id.etSecondSummonerName);
         btnSubmit = findViewById(R.id.btnSubmit);
+        btnSubmit.setBackgroundColor(Color.GRAY);
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
