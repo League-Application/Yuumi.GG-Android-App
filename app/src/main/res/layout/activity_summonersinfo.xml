@@ -29,7 +29,7 @@
         android:text="Second Summoner Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvFirstSummonerName" />
+        app:layout_constraintTop_toBottomOf="@+id/tvSummonerName" />
 
     <TextView
         android:id="@+id/tvSecondSummonerRank"
@@ -49,7 +49,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvSecondSummonerName" />
 
     <TextView
-        android:id="@+id/tvFirstSummonerName"
+        android:id="@+id/tvSummonerName"
         android:layout_width="253dp"
         android:layout_height="23dp"
         android:layout_marginTop="72dp"
@@ -59,46 +59,46 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvFirstSummonerRank"
+        android:id="@+id/tvSummonerRank"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Rank"
-        app:layout_constraintStart_toStartOf="@+id/tvFirstSummonerName"
-        app:layout_constraintTop_toBottomOf="@+id/tvFirstSummonerName" />
+        app:layout_constraintStart_toStartOf="@+id/tvSummonerName"
+        app:layout_constraintTop_toBottomOf="@+id/tvSummonerName" />
 
     <TextView
-        android:id="@+id/tvFirstSummonerLP"
+        android:id="@+id/tvSummonerLP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/tvFirstSummonerRank"
-        app:layout_constraintTop_toTopOf="@+id/tvFirstSummonerRank" />
+        app:layout_constraintStart_toEndOf="@+id/tvSummonerRank"
+        app:layout_constraintTop_toTopOf="@+id/tvSummonerRank" />
 
     <TextView
-        android:id="@+id/tvFirstSummonerLevel"
+        android:id="@+id/tvSummonerLevel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Level: "
-        app:layout_constraintStart_toStartOf="@+id/tvFirstSummonerRank"
-        app:layout_constraintTop_toBottomOf="@+id/tvFirstSummonerRank" />
+        app:layout_constraintStart_toStartOf="@+id/tvSummonerRank"
+        app:layout_constraintTop_toBottomOf="@+id/tvSummonerRank" />
 
     <TextView
-        android:id="@+id/tvFirstSummonerLevelInt"
+        android:id="@+id/tvSummonerLevelInt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="30"
-        app:layout_constraintStart_toEndOf="@+id/tvFirstSummonerLevel"
-        app:layout_constraintTop_toBottomOf="@+id/tvFirstSummonerLP" />
+        app:layout_constraintStart_toEndOf="@+id/tvSummonerLevel"
+        app:layout_constraintTop_toBottomOf="@+id/tvSummonerLP" />
 
     <ImageView
-        android:id="@+id/ivFirstSummonerIcon"
+        android:id="@+id/ivSummonerIcon"
         android:layout_width="62dp"
         android:layout_height="62dp"
         android:layout_marginStart="4dp"
-        app:layout_constraintEnd_toStartOf="@+id/tvFirstSummonerName"
+        app:layout_constraintEnd_toStartOf="@+id/tvSummonerName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvFirstSummonerName"
+        app:layout_constraintTop_toTopOf="@+id/tvSummonerName"
         tools:srcCompat="@tools:sample/avatars" />
 
     <ImageView

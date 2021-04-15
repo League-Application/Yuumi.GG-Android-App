@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvSummonerName"
+        android:layout_width="253dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="72dp"
+        android:text="First Summoner Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSummonerRank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rank"
+        app:layout_constraintStart_toStartOf="@+id/tvSummonerName"
+        app:layout_constraintTop_toBottomOf="@+id/tvSummonerName" />
+
+    <TextView
+        android:id="@+id/tvSummonerLP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/tvSummonerRank"
+        app:layout_constraintTop_toTopOf="@+id/tvSummonerRank" />
+
+    <TextView
+        android:id="@+id/tvSummonerLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Level: "
+        app:layout_constraintStart_toStartOf="@+id/tvSummonerRank"
+        app:layout_constraintTop_toBottomOf="@+id/tvSummonerRank" />
+
+    <TextView
+        android:id="@+id/tvSummonerLevelInt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="30"
+        app:layout_constraintStart_toEndOf="@+id/tvSummonerLevel"
+        app:layout_constraintTop_toBottomOf="@+id/tvSummonerLP" />
+
+    <ImageView
+        android:id="@+id/ivSummonerIcon"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="4dp"
+        app:layout_constraintEnd_toStartOf="@+id/tvSummonerName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvSummonerName"
+        tools:srcCompat="@tools:sample/avatars" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

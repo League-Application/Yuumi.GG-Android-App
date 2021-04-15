@@ -3,53 +3,38 @@ package com.LeagueApplication.YummiGG;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.merakianalytics.orianna.Orianna;
 import com.merakianalytics.orianna.types.common.Region;
-import com.merakianalytics.orianna.types.core.summoner.Summoner;
 
 import org.parceler.Parcels;
 
-import java.util.ArrayList;
-import java.util.List;
+public class SummonerInfoActivity extends AppCompatActivity {
 
-import static com.google.common.collect.ComparisonChain.start;
+    private final String TAG = "SummonerInfoActivity";
 
-public class InfoActivity extends AppCompatActivity {
-
-    private final String TAG = "InfoActivity";
-
-    TextView firstSummonerName, secondSummonerName, firstSummonerRank, secondSummonerRank,
-            firstSummonerLP, secondSummonerLP, firstSummonerLevel, secondSummonerLevel;;
+    TextView summonerName, summonerRankedSolo, summonerLP, summonerLevel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_info);
+        setContentView(R.layout.activity_summonerinfo);
 
-        firstSummonerName = findViewById(R.id.tvFirstSummonerName);
-        firstSummonerRank = findViewById(R.id.tvFirstSummonerRank);
-        firstSummonerLP = findViewById(R.id.tvFirstSummonerLP);
-        firstSummonerLevel = findViewById(R.id.tvFirstSummonerLevelInt);
-
-        secondSummonerName = findViewById(R.id.tvSecondSummonerName);
-        secondSummonerRank = findViewById(R.id.tvSecondSummonerRank);
-        secondSummonerLP = findViewById(R.id.tvSecondSummonerLP);
-        secondSummonerLevel = findViewById(R.id.tvSecondSummonerLevelInt);
+        summonerName = findViewById(R.id.tvSummonerName);
+        summonerRankedSolo = findViewById(R.id.tvSummonerRank);
+        summonerLP = findViewById(R.id.tvSummonerLP);
+        summonerLevel = findViewById(R.id.tvSummonerLevelInt);
 
         setupOrianna();
         //String[] summoners = new String[2];     //Unwrapping user input summoner names and adding them to a list //TODO add better handling for multiple summoners
 
-        String firstSummoner = Parcels.unwrap(getIntent().getParcelableExtra("firstSummoner"));
-        String secondSummoner = Parcels.unwrap(getIntent().getParcelableExtra("secondSummoner"));
+        String summoner = Parcels.unwrap(getIntent().getParcelableExtra("Summoner"));
 
-        getSummonerName(firstSummoner, firstSummonerName);
-        getSummonerName(secondSummoner, secondSummonerName);
-        getSummonerLevel(firstSummoner, firstSummonerLevel);
-        getSummonerLevel(secondSummoner, secondSummonerLevel);
-        getSummonerRankedSolo(firstSummoner, firstSummonerRank, firstSummonerLP);
-        getSummonerRankedSolo(secondSummoner, secondSummonerRank, secondSummonerLP);
+        getSummonerName(summoner, summonerName);
+        getSummonerLevel(summoner, summonerLevel);
+        getSummonerRankedSolo(summoner, summonerRankedSolo, summonerLP);
     }
 
     private void setupOrianna() {
