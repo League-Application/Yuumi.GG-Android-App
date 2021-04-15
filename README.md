@@ -29,11 +29,11 @@ Group #3 Project: Yuumi.GG League of Legends Statistics Comparison for Android
 
 **Required Must-have Stories**
 
-*User can Enter their Summoner Name and have it parsed through RIOT's Api.
-*User can recieve information about their games.
-*Names are persisted as recent searches.
-*User can enter another summoner and compare their stats head to head.
-*User can view their recent 20 games or other Summoners 20 games.
+*[X] User can Enter their Summoner Name and have it parsed through RIOT's Api.<br>
+*User can recieve information about their games.<br>
+*Names are persisted as recent searches.<br>
+*[X] User can enter another summoner and compare their stats head to head.<br>
+*User can view their recent 20 games or other Summoners 20 games.<br>
 
 **Optional Nice-to-have Stories**
 
@@ -106,3 +106,17 @@ Optional:
       - (Read/GET) View Summoner info pulled from Summoner v4 API
     - Side by Side In Depth Comparison
     - (Read/GET) View Additional Summoner info pulled from Summoner v4 API in comparison with the other Summoner
+
+
+#### 4. Sprint 1:
+
+[X] Add a screen where User can enter another summoner and compare their stats head to head.
+[X] Get Ranks from league-v4 API using summonerID
+
+GIFS of Progress on Sprint 1:
+
+<img src="https://i.imgur.com/sJbvmiE.gif" width=600>
+
+
+
+
