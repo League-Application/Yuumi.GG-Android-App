@@ -43,4 +43,5 @@ dependencies {
     implementation "com.merakianalytics.orianna:orianna-android:4.0.0-rc7"
     implementation 'org.parceler:parceler-api:1.1.12'
     annotationProcessor 'org.parceler:parceler:1.1.12'
+    implementation 'com.squareup.picasso:picasso:2.6.0-SNAPSHOT'
 }

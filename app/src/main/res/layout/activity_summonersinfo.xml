@@ -5,110 +5,137 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tvSecondSummonerLevelInt"
+    <TableLayout
+        android:id="@+id/table"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="30"
-        app:layout_constraintStart_toEndOf="@+id/tvSecondSummonerLevel"
-        app:layout_constraintTop_toTopOf="@+id/tvSecondSummonerLevel" />
+        android:orientation="horizontal"
 
-    <TextView
-        android:id="@+id/tvSecondSummonerLevel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Level: "
-        app:layout_constraintStart_toStartOf="@+id/tvSecondSummonerName"
-        app:layout_constraintTop_toBottomOf="@+id/tvSecondSummonerRank" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="7dp">
 
-    <TextView
-        android:id="@+id/tvSecondSummonerName"
-        android:layout_width="253dp"
-        android:layout_height="23dp"
-        android:layout_marginTop="248dp"
-        android:text="Second Summoner Name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSummonerName" />
 
-    <TextView
-        android:id="@+id/tvSecondSummonerRank"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Rank"
-        app:layout_constraintStart_toStartOf="@+id/tvSecondSummonerName"
-        app:layout_constraintTop_toBottomOf="@+id/tvSecondSummonerName" />
+        <TableRow
+            android:id="@+id/tableRow"
+            android:layout_width="wrap_content"
+            android:layout_height="114dp">
+            
 
-    <TextView
-        android:id="@+id/tvSecondSummonerLP"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/tvSecondSummonerRank"
-        app:layout_constraintTop_toBottomOf="@+id/tvSecondSummonerName" />
 
-    <TextView
-        android:id="@+id/tvSummonerName"
-        android:layout_width="253dp"
-        android:layout_height="23dp"
-        android:layout_marginTop="72dp"
-        android:text="First Summoner Name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:id="@+id/ivSummonerIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="240dp"
+                android:layout_marginStart="2dp"
+                tools:srcCompat="@tools:sample/avatars" />
 
-    <TextView
-        android:id="@+id/tvSummonerRank"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Rank"
-        app:layout_constraintStart_toStartOf="@+id/tvSummonerName"
-        app:layout_constraintTop_toBottomOf="@+id/tvSummonerName" />
+            <ImageView
+                android:id="@+id/ivSecondSummonerIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="240dp"
+                android:layout_marginEnd="2dp"
 
-    <TextView
-        android:id="@+id/tvSummonerLP"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/tvSummonerRank"
-        app:layout_constraintTop_toTopOf="@+id/tvSummonerRank" />
 
-    <TextView
-        android:id="@+id/tvSummonerLevel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Level: "
-        app:layout_constraintStart_toStartOf="@+id/tvSummonerRank"
-        app:layout_constraintTop_toBottomOf="@+id/tvSummonerRank" />
+                tools:srcCompat="@tools:sample/avatars" />
 
-    <TextView
-        android:id="@+id/tvSummonerLevelInt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="30"
-        app:layout_constraintStart_toEndOf="@+id/tvSummonerLevel"
-        app:layout_constraintTop_toBottomOf="@+id/tvSummonerLP" />
+        </TableRow>
 
-    <ImageView
-        android:id="@+id/ivSummonerIcon"
-        android:layout_width="62dp"
-        android:layout_height="62dp"
-        android:layout_marginStart="4dp"
-        app:layout_constraintEnd_toStartOf="@+id/tvSummonerName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvSummonerName"
-        tools:srcCompat="@tools:sample/avatars" />
 
-    <ImageView
-        android:id="@+id/ivSecondSummonerIcon"
-        android:layout_width="62dp"
-        android:layout_height="62dp"
-        android:layout_marginStart="4dp"
-        app:layout_constraintEnd_toStartOf="@+id/tvSecondSummonerName"
-        app:layout_constraintHorizontal_bias="0.538"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvSecondSummonerName"
-        tools:srcCompat="@tools:sample/avatars" />
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="114dp"
+            android:layout_marginStart="2dp">
+
+
+            <TextView
+                android:id="@+id/tvSummonerName"
+
+                android:layout_height="29dp"
+                android:layout_marginTop="2dp"
+                android:background="@color/teal_700"
+                android:text="First Summoner Name" />
+
+            <TextView
+                android:id="@+id/tvSecondSummonerName"
+                android:layout_height="29dp"
+                android:layout_marginTop="2dp"
+                android:background="@color/teal_200"
+                android:text="Second Summoner Name" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="114dp">
+
+
+            <TextView
+                android:id="@+id/tvSummonerLevelInt"
+                android:layout_width="224dp"
+                android:layout_height="29dp"
+                android:layout_marginTop="2dp"
+                android:text="Level: " />
+
+
+            <TextView
+                android:id="@+id/tvSecondSummonerLevelInt"
+                android:layout_width="224dp"
+                android:layout_height="29dp"
+                android:layout_marginTop="2dp"
+                android:text="Level: " />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="114dp">
+
+            <TextView
+                android:id="@+id/tvSummonerRank"
+                android:layout_width="224dp"
+                android:layout_height="29dp"
+                android:layout_marginTop="2dp"
+                android:text="Rank" />
+
+
+            <TextView
+                android:id="@+id/tvSecondSummonerRank"
+                android:layout_width="224dp"
+                android:layout_height="29dp"
+                android:layout_marginTop="2dp"
+                android:text="Rank" />
+
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="wrap_content"
+            android:layout_height="114dp">
+
+
+            <TextView
+                android:id="@+id/tvSummonerLP"
+                android:layout_width="224dp"
+                android:layout_height="29dp"
+                android:layout_marginTop="2dp"
+                android:text="SummonerLP" />
+
+
+            <TextView
+                android:id="@+id/tvSecondSummonerLP"
+                android:layout_width="224dp"
+                android:layout_height="29dp"
+                android:layout_marginTop="2dp"
+                android:text="SummonerLP" />
+
+
+        </TableRow>
+
+
+
+    </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
