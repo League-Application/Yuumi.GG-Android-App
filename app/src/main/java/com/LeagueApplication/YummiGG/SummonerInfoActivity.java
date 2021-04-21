@@ -85,7 +85,7 @@ public class SummonerInfoActivity extends AppCompatActivity {
         }
         String imageUri = ori.summonerIconUrl;
         String [] new_URI = imageUri.split(":",2);
-        String final_url="https:"+ new_URI[1];
+        String final_url="https:"+ new_URI[1]; // needs htttps to work
         Picasso.with(this).load(final_url).into(etSummonericon);
     }
     private void getSummonerName(String summoner, TextView etSummonerName) {
