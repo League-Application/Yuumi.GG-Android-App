@@ -120,6 +120,6 @@ GIFS of Progress on Sprint 1:
 
 #### 5. Sprint 2:
 [X] User can navigate to separate screen with detailed stats about summoner.<br>
-<img src="https://i.imgur.com/sJbvmiE.gif" width=600>
+<img src='Untitled.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 
