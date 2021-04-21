@@ -18,7 +18,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final String TAG = "FirstpageActivity";                         // tag for Log
+    private final String TAG = "MainActivity";                         // tag for Log
     private EditText etFirstSummonerName, etSecondSummonerName;  // text inputs
     private Button btnCompareSummoners;
     private ImageButton btnSearchFirstSummoner, btnSearchSecondSummoner;

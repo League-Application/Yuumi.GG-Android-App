@@ -53,6 +53,27 @@ public class SummonerInfoActivity extends AppCompatActivity {
     }
 
 
+    private void getSummonerrunes(String summoner, TextView etSummonerLevel) {
+        OriannaHandler ori = new OriannaHandler(summoner);
+        ori.start();
+        try {
+            ori.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        //TODO
+    }
+
+    private void getSummonerSpells(String summoner, TextView etSummonerLevel) {
+        OriannaHandler ori = new OriannaHandler(summoner);
+        ori.start();
+        try {
+            ori.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        //TODO
+    }
 
     private void getSummoneicon(String summoner, ImageView etSummonericon) {
         OriannaHandler ori = new OriannaHandler(summoner);
