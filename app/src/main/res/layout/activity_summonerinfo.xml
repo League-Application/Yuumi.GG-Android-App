@@ -16,7 +16,7 @@
 
 
         <ImageView
-            android:id="@+id/ivSummonerIcon"
+            android:id="@+id/ivFirstSummonerIcon"
             android:layout_width="296dp"
             android:layout_height="296dp"
             android:layout_marginStart="30dp"
@@ -30,22 +30,22 @@
 
 
             <TextView
-                android:id="@+id/Attibutes"
+                android:id="@+id/Attributes"
                 android:layout_width="224dp"
                 android:layout_height="29dp"
                 android:layout_marginTop="2dp"
                 android:background="@color/teal_200"
 
-                android:text="Attibutes"
+                android:text="Attributes"
                 app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
-                android:id="@+id/tvSummonerName"
+                android:id="@+id/tvFirstSummonerName"
                 android:layout_width="177dp"
                 android:layout_height="29dp"
                 android:layout_marginTop="2dp"
                 android:background="@color/teal_200"
-                android:text="First Summoner Name"
+                android:text="Summoner Name"
                 app:layout_constraintEnd_toEndOf="parent" />
 
 
@@ -68,7 +68,6 @@
                 android:id="@+id/tvSummonerLevelInt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Level: "
                 app:layout_constraintStart_toEndOf="@+id/tvSecondSummonerLevel"
                 app:layout_constraintTop_toTopOf="@+id/tvSecondSummonerLevel" />
 
@@ -92,8 +91,7 @@
             <TextView
                 android:id="@+id/tvSummonerRank"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Rank" />
+                android:layout_height="wrap_content" />
 
 
         </TableRow>
@@ -108,7 +106,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
 
-                android:text="SummonerLP"
+                android:text="LP"
                 app:layout_constraintStart_toEndOf="@+id/tvSecondSummonerRank"
                 app:layout_constraintTop_toBottomOf="@+id/tvSecondSummonerName" />
 
@@ -118,7 +116,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:text="TextView"
                 app:layout_constraintStart_toEndOf="@+id/tvSummonerRank"
                 app:layout_constraintTop_toTopOf="@+id/tvSummonerRank" />
 

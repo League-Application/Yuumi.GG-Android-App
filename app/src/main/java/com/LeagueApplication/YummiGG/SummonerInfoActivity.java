@@ -20,7 +20,7 @@ public class SummonerInfoActivity extends AppCompatActivity {
     private final String TAG = "SummonerInfoActivity";
 
     TextView summonerName, summonerRankedSolo, summonerLP, summonerLevel;
-    ImageView summonericon;
+    ImageView summonerIcon;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -28,11 +28,11 @@ public class SummonerInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_summonerinfo);
 
-        summonerName = findViewById(R.id.tvSummonerName);
+        summonerName = findViewById(R.id.tvFirstSummonerName);
         summonerRankedSolo = findViewById(R.id.tvSummonerRank);
         summonerLP = findViewById(R.id.tvSummonerLP);
         summonerLevel = findViewById(R.id.tvSummonerLevelInt);
-        summonericon =findViewById(R.id.ivSummonerIcon);
+        summonerIcon = findViewById(R.id.ivFirstSummonerIcon);
 
         setupOrianna();
         //String[] summoners = new String[2];     //Unwrapping user input summoner names and adding them to a list //TODO add better handling for multiple summoners
@@ -42,7 +42,7 @@ public class SummonerInfoActivity extends AppCompatActivity {
         getSummonerName(summoner, summonerName);
         getSummonerLevel(summoner, summonerLevel);
         getSummonerRankedSolo(summoner, summonerRankedSolo, summonerLP);
-        getSummonericon(summoner,summonericon);
+        getSummonerIcon(summoner, summonerIcon);
     }
 
     private void setupOrianna() {
@@ -50,7 +50,7 @@ public class SummonerInfoActivity extends AppCompatActivity {
         Orianna.setDefaultRegion(Region.NORTH_AMERICA);
     }
 
-    private void getSummonericon(String summoner, ImageView etSummonericon) {
+    private void getSummonerIcon(String summoner, ImageView ivSummonerIcon) {
         OriannaHandler ori = new OriannaHandler(summoner);
         ori.start();
         try {
@@ -61,7 +61,7 @@ public class SummonerInfoActivity extends AppCompatActivity {
         String imageUri = ori.summonerIconUrl;
         String [] new_URI = imageUri.split(":",2);
         String final_url="https:"+ new_URI[1]; // needs htttps to work
-        Picasso.with(this).load(final_url).into(etSummonericon);
+        Picasso.with(this).load(final_url).into(ivSummonerIcon);
     }
     private void getSummonerName(String summoner, TextView etSummonerName) {
         OriannaHandler ori = new OriannaHandler(summoner);

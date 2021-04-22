@@ -2,7 +2,6 @@ package com.LeagueApplication.YummiGG;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.merakianalytics.orianna.Orianna;
 import com.merakianalytics.orianna.types.common.Region;
-import com.merakianalytics.orianna.types.core.staticdata.ProfileIcon;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -23,7 +21,7 @@ public class SummonersInfoActivity extends AppCompatActivity {
 
     TextView firstSummonerName, secondSummonerName, firstSummonerRankedSolo, secondSummonerRankedSolo,
             firstSummonerLP, secondSummonerLP, firstSummonerLevel, secondSummonerLevel;
-    ImageView firstsummonericon, secondsummonericon;
+    ImageView firstSummonerIcon, secondSummonerIcon;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -31,12 +29,12 @@ public class SummonersInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_summonersinfo);
 
-        firstSummonerName = findViewById(R.id.tvSummonerName);
+        firstSummonerName = findViewById(R.id.tvFirstSummonerName);
         firstSummonerRankedSolo = findViewById(R.id.tvSummonerRank);
         firstSummonerLP = findViewById(R.id.tvSummonerLP);
         firstSummonerLevel = findViewById(R.id.tvSummonerLevelInt);
-        firstsummonericon=findViewById(R.id.ivSecondSummonerIcon);
-        secondsummonericon =findViewById(R.id.ivSummonerIcon);
+        firstSummonerIcon=findViewById(R.id.ivFirstSummonerIcon);
+        secondSummonerIcon =findViewById(R.id.ivSecondSummonerIcon);
         secondSummonerName = findViewById(R.id.tvSecondSummonerName);
         secondSummonerRankedSolo = findViewById(R.id.tvSecondSummonerRank);
         secondSummonerLP = findViewById(R.id.tvSecondSummonerLP);
@@ -59,8 +57,8 @@ public class SummonersInfoActivity extends AppCompatActivity {
         getSummonerLevel(secondSummoner, secondSummonerLevel);
         getSummonerRankedSolo(firstSummoner, firstSummonerRankedSolo, firstSummonerLP);
         getSummonerRankedSolo(secondSummoner, secondSummonerRankedSolo, secondSummonerLP);
-        getSummoneicon(firstSummoner,firstsummonericon);
-        getSummoneicon(secondSummoner, secondsummonericon);
+        getSummonerIcon(firstSummoner,firstSummonerIcon);
+        getSummonerIcon(secondSummoner, secondSummonerIcon);
     }
 
     private void setupOrianna() {
@@ -68,7 +66,7 @@ public class SummonersInfoActivity extends AppCompatActivity {
         Orianna.setDefaultRegion(Region.NORTH_AMERICA);
     }
 
-    private void getSummoneicon(String summoner, ImageView etSummonericon) {
+    private void getSummonerIcon(String summoner, ImageView etSummonericon) {
         OriannaHandler ori = new OriannaHandler(summoner);
         ori.start();
         try {
