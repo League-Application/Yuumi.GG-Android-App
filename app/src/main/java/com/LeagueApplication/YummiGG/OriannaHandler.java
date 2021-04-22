@@ -3,7 +3,9 @@ package com.LeagueApplication.YummiGG;
 import com.merakianalytics.orianna.Orianna;
 import com.merakianalytics.orianna.types.common.Queue;
 import com.merakianalytics.orianna.types.core.league.LeagueEntry;
+import com.merakianalytics.orianna.types.core.staticdata.ReforgedRunes;
 import com.merakianalytics.orianna.types.core.summoner.Summoner;
+import com.merakianalytics.orianna.types.dto.staticdata.ReforgedRune;
 
 public class OriannaHandler extends Thread{
 
