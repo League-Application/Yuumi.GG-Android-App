@@ -1,7 +1,6 @@
 package com.LeagueApplication.YummiGG;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,12 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-
 import org.parceler.Parcels;
-
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -57,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 summoners.add(etFirstSummonerName.getText().toString());        //TODO add better summoners handling
                 summoners.add(etSecondSummonerName.getText().toString());
+                Log.i(TAG,etFirstSummonerName.getText().toString());
+                Log.i(TAG,etSecondSummonerName.getText().toString());
                 searchSummoners(summoners);
             }
         });
@@ -72,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void searchSummoners(List<String> summoners) {
         Log.i(TAG, "Attempting to search summoners ");
+
 
         Intent i = new Intent(this, SummonersInfoActivity.class);
         i.putExtra("firstSummoner", Parcels.wrap(summoners.get(0)));

@@ -34,6 +34,8 @@ Group #3 Project: Yuumi.GG League of Legends Statistics Comparison for Android
 *Names are persisted as recent searches.<br>
 *[X] User can enter another summoner and compare their stats head to head.<br>
 *User can view their recent 20 games or other Summoners 20 games.<br>
+[X] User can navigate to separate screen with detailed stats about summoner.<br>
+
 
 **Optional Nice-to-have Stories**
 
@@ -117,6 +119,10 @@ GIFS of Progress on Sprint 1:
 
 <img src="https://i.imgur.com/sJbvmiE.gif" width=600>
 
+#### 5. Sprint 2:
+[X] User can navigate to separate screen with detailed stats about summoner.<br>
+[X] Added summoner's profile icon 
 
+<img src='Untitled.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 

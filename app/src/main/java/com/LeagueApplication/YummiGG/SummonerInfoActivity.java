@@ -1,13 +1,17 @@
 package com.LeagueApplication.YummiGG;
 
+import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+
 
 import com.merakianalytics.orianna.Orianna;
 import com.merakianalytics.orianna.types.common.Region;
+import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
@@ -16,7 +20,9 @@ public class SummonerInfoActivity extends AppCompatActivity {
     private final String TAG = "SummonerInfoActivity";
 
     TextView summonerName, summonerRankedSolo, summonerLP, summonerLevel;
+    ImageView summonericon;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +32,7 @@ public class SummonerInfoActivity extends AppCompatActivity {
         summonerRankedSolo = findViewById(R.id.tvSummonerRank);
         summonerLP = findViewById(R.id.tvSummonerLP);
         summonerLevel = findViewById(R.id.tvSummonerLevelInt);
+        summonericon =findViewById(R.id.ivSummonerIcon);
 
         setupOrianna();
         //String[] summoners = new String[2];     //Unwrapping user input summoner names and adding them to a list //TODO add better handling for multiple summoners
@@ -35,6 +42,7 @@ public class SummonerInfoActivity extends AppCompatActivity {
         getSummonerName(summoner, summonerName);
         getSummonerLevel(summoner, summonerLevel);
         getSummonerRankedSolo(summoner, summonerRankedSolo, summonerLP);
+        getSummonericon(summoner,summonericon);
     }
 
     private void setupOrianna() {
@@ -42,6 +50,19 @@ public class SummonerInfoActivity extends AppCompatActivity {
         Orianna.setDefaultRegion(Region.NORTH_AMERICA);
     }
 
+    private void getSummonericon(String summoner, ImageView etSummonericon) {
+        OriannaHandler ori = new OriannaHandler(summoner);
+        ori.start();
+        try {
+            ori.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        String imageUri = ori.summonerIconUrl;
+        String [] new_URI = imageUri.split(":",2);
+        String final_url="https:"+ new_URI[1]; // needs htttps to work
+        Picasso.with(this).load(final_url).into(etSummonericon);
+    }
     private void getSummonerName(String summoner, TextView etSummonerName) {
         OriannaHandler ori = new OriannaHandler(summoner);
         ori.start();
@@ -50,6 +71,7 @@ public class SummonerInfoActivity extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
         etSummonerName.setText(ori.summonerName);
     }
 
@@ -72,7 +94,7 @@ public class SummonerInfoActivity extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Log.i(TAG, String.valueOf(ori.summonerRankedSolo.getLeaguePoints()));
+        //Log.i(TAG, String.valueOf(ori.summonerRankedSolo.getLeaguePoints()));
         etSummonerRank.setText(String.valueOf(ori.summonerRankedSolo.getTier()).substring(0, 1) + String.valueOf(ori.summonerRankedSolo.getTier()).substring(1).toLowerCase() + " " + ori.summonerRankedSolo.getDivision());
         etSummonerLP.setText(ori.summonerRankedSolo.getLeaguePoints() + " LP");
     }
