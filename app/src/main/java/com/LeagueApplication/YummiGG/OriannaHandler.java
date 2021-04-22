@@ -15,8 +15,6 @@ public class OriannaHandler extends Thread{
     String summonerName;
     int summonerLevel;
     LeagueEntry summonerRankedSolo;
-    ReforgedRunes runes;
-    SummonerSpells summonerSpells;
     String  summonerIconUrl;
     public OriannaHandler(String summmonerNameInput){
         this.summmonerNameInput = summmonerNameInput;
@@ -28,8 +26,6 @@ public class OriannaHandler extends Thread{
         summonerName = summoner.getName();
         summonerLevel = summoner.getLevel();
         summonerRankedSolo = summoner.getLeaguePosition(Queue.RANKED_SOLO);
-        runes = ReforgedRunes.get();
-        summonerSpells = SummonerSpells.get();
         summonerIconUrl = summoner.getProfileIcon().getImage().getURL();
 
     }

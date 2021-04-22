@@ -2,7 +2,6 @@ package com.LeagueApplication.YummiGG;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.merakianalytics.orianna.Orianna;
 import com.merakianalytics.orianna.types.common.Region;
-import com.merakianalytics.orianna.types.core.staticdata.ProfileIcon;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -44,7 +42,7 @@ public class SummonerInfoActivity extends AppCompatActivity {
         getSummonerName(summoner, summonerName);
         getSummonerLevel(summoner, summonerLevel);
         getSummonerRankedSolo(summoner, summonerRankedSolo, summonerLP);
-        getSummoneicon(summoner,summonericon);
+        getSummonericon(summoner,summonericon);
     }
 
     private void setupOrianna() {
@@ -52,30 +50,7 @@ public class SummonerInfoActivity extends AppCompatActivity {
         Orianna.setDefaultRegion(Region.NORTH_AMERICA);
     }
 
-
-    private void getSummonerrunes(String summoner, TextView etSummonerLevel) {
-        OriannaHandler ori = new OriannaHandler(summoner);
-        ori.start();
-        try {
-            ori.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        //TODO
-    }
-
-    private void getSummonerSpells(String summoner, TextView etSummonerLevel) {
-        OriannaHandler ori = new OriannaHandler(summoner);
-        ori.start();
-        try {
-            ori.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        //TODO
-    }
-
-    private void getSummoneicon(String summoner, ImageView etSummonericon) {
+    private void getSummonericon(String summoner, ImageView etSummonericon) {
         OriannaHandler ori = new OriannaHandler(summoner);
         ori.start();
         try {
