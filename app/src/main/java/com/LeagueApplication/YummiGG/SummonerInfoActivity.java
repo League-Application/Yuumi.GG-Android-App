@@ -2,6 +2,7 @@ package com.LeagueApplication.YummiGG;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -95,8 +96,15 @@ public class SummonerInfoActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         //Log.i(TAG, String.valueOf(ori.summonerRankedSolo.getLeaguePoints()));
-        etSummonerRank.setText(String.valueOf(ori.summonerRankedSolo.getTier()).substring(0, 1) + String.valueOf(ori.summonerRankedSolo.getTier()).substring(1).toLowerCase() + " " + ori.summonerRankedSolo.getDivision());
-        etSummonerLP.setText(ori.summonerRankedSolo.getLeaguePoints() + " LP");
+        try {
+            etSummonerRank.setText(String.valueOf(ori.summonerRankedSolo.getTier()).substring(0, 1) + String.valueOf(ori.summonerRankedSolo.getTier()).substring(1).toLowerCase() + " " + ori.summonerRankedSolo.getDivision());
+            etSummonerLP.setText(ori.summonerRankedSolo.getLeaguePoints() + " LP");
+        }
+        catch (Exception e) {
+            Log.e(TAG, "Must be unranked...");
+            etSummonerRank.setText("Unranked");
+            etSummonerLP.setText("0 LP");
+            }
     }
 
 }
