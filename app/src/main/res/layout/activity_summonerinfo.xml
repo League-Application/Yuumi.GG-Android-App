@@ -1,129 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rvRelativeLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent" >
 
-    <TableLayout
-        android:id="@+id/table"
-        android:layout_width="405dp"
-        android:layout_height="591dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="4dp">
+    <TextView
+        android:id="@+id/tvSummonerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/ivSummonerIcon"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        tools:text="Summoner Name" />
 
+    <ImageView
+        android:id="@+id/ivSummonerIcon"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        tools:srcCompat="@tools:sample/avatars" />
 
-        <ImageView
-            android:id="@+id/ivFirstSummonerIcon"
-            android:layout_width="296dp"
-            android:layout_height="296dp"
-            android:layout_marginStart="30dp"
-            tools:srcCompat="@tools:sample/avatars" />
+    <TextView
+        android:id="@+id/tvSummonerRankedSolo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvSummonerName"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/ivSummonerIcon"
+        android:textSize="20sp"
+        tools:text="Platinum IV" />
 
+    <TextView
+        android:id="@+id/tvSummonerLP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvSummonerName"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/tvSummonerRankedSolo"
+        android:textSize="20sp"
+        tools:text="59 LP" />
 
-        <TableRow
-            android:id="@+id/tableRow1"
-            android:layout_width="wrap_content"
-            android:layout_height="114dp">
+    <TextView
+        android:id="@+id/tvSummonerLevelTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivSummonerIcon"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:text="Level:" />
 
+    <TextView
+        android:id="@+id/tvSummonerLevelInt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivSummonerIcon"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/tvSummonerLevelTitle"
+        tools:text="243" />
 
-            <TextView
-                android:id="@+id/Attributes"
-                android:layout_width="224dp"
-                android:layout_height="29dp"
-                android:layout_marginTop="2dp"
-                android:background="@color/teal_200"
-
-                android:text="Attributes"
-                app:layout_constraintEnd_toEndOf="parent" />
-
-            <TextView
-                android:id="@+id/tvFirstSummonerName"
-                android:layout_width="177dp"
-                android:layout_height="29dp"
-                android:layout_marginTop="2dp"
-                android:background="@color/teal_200"
-                android:text="Summoner Name"
-                app:layout_constraintEnd_toEndOf="parent" />
-
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow2"
-            android:layout_width="match_parent"
-            android:layout_height="114dp">
-
-            <TextView
-                android:id="@+id/Attibutes2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Level: "
-                app:layout_constraintStart_toStartOf="@+id/tvSecondSummonerName"
-                app:layout_constraintTop_toBottomOf="@+id/tvSecondSummonerRank" />
-
-            <TextView
-                android:id="@+id/tvSummonerLevelInt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@+id/tvSecondSummonerLevel"
-                app:layout_constraintTop_toTopOf="@+id/tvSecondSummonerLevel" />
-
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow3"
-            android:layout_width="match_parent"
-            android:layout_height="114dp">
-
-
-            <TextView
-                android:id="@+id/Attibutes3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Rank"
-                app:layout_constraintStart_toStartOf="@+id/tvSecondSummonerName"
-                app:layout_constraintTop_toBottomOf="@+id/tvSecondSummonerName" />
-
-            <TextView
-                android:id="@+id/tvSummonerRank"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow4"
-            android:layout_width="match_parent"
-            android:layout_height="114dp">
-
-            <TextView
-                android:id="@+id/Attibutes4"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-
-                android:text="LP"
-                app:layout_constraintStart_toEndOf="@+id/tvSecondSummonerRank"
-                app:layout_constraintTop_toBottomOf="@+id/tvSecondSummonerName" />
-
-
-            <TextView
-                android:id="@+id/tvSummonerLP"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                app:layout_constraintStart_toEndOf="@+id/tvSummonerRank"
-                app:layout_constraintTop_toTopOf="@+id/tvSummonerRank" />
-
-
-        </TableRow>
-
-
-
-
-    </TableLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

@@ -23,7 +23,6 @@ public class OriannaHandler extends Thread{
         summonerLevel = summoner.getLevel();
         summonerRankedSolo = summoner.getLeaguePosition(Queue.RANKED_SOLO);
         summonerIconUrl = summoner.getProfileIcon().getImage().getURL();
-
     }
 
 }

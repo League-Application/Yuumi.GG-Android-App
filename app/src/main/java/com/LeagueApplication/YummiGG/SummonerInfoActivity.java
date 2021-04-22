@@ -28,11 +28,11 @@ public class SummonerInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_summonerinfo);
 
-        summonerName = findViewById(R.id.tvFirstSummonerName);
-        summonerRankedSolo = findViewById(R.id.tvSummonerRank);
+        summonerName = findViewById(R.id.tvSummonerName);
+        summonerRankedSolo = findViewById(R.id.tvSummonerRankedSolo);
         summonerLP = findViewById(R.id.tvSummonerLP);
         summonerLevel = findViewById(R.id.tvSummonerLevelInt);
-        summonerIcon = findViewById(R.id.ivFirstSummonerIcon);
+        summonerIcon = findViewById(R.id.ivSummonerIcon);
 
         setupOrianna();
         //String[] summoners = new String[2];     //Unwrapping user input summoner names and adding them to a list //TODO add better handling for multiple summoners

@@ -2,6 +2,7 @@ package com.LeagueApplication.YummiGG;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,7 +18,7 @@ import org.parceler.Parcels;
 
 public class SummonersInfoActivity extends AppCompatActivity {
 
-    private final String TAG = "SummonerInfoActivity";
+    private final String TAG = "SummonersInfoActivity";
 
     TextView firstSummonerName, secondSummonerName, firstSummonerRankedSolo, secondSummonerRankedSolo,
             firstSummonerLP, secondSummonerLP, firstSummonerLevel, secondSummonerLevel;
@@ -30,15 +31,16 @@ public class SummonersInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_summonersinfo);
 
         firstSummonerName = findViewById(R.id.tvFirstSummonerName);
-        firstSummonerRankedSolo = findViewById(R.id.tvSummonerRank);
-        firstSummonerLP = findViewById(R.id.tvSummonerLP);
-        firstSummonerLevel = findViewById(R.id.tvSummonerLevelInt);
-        firstSummonerIcon=findViewById(R.id.ivFirstSummonerIcon);
-        secondSummonerIcon =findViewById(R.id.ivSecondSummonerIcon);
+        firstSummonerRankedSolo = findViewById(R.id.tvFirstSummonerRankedSolo);
+        firstSummonerLP = findViewById(R.id.tvFirstSummonerLP);
+        firstSummonerLevel = findViewById(R.id.tvFirstSummonerLevelInt);
+        firstSummonerIcon= findViewById(R.id.ivFirstSummonerIcon);
+
         secondSummonerName = findViewById(R.id.tvSecondSummonerName);
-        secondSummonerRankedSolo = findViewById(R.id.tvSecondSummonerRank);
+        secondSummonerRankedSolo = findViewById(R.id.tvSecondSummonerRankedSolo);
         secondSummonerLP = findViewById(R.id.tvSecondSummonerLP);
         secondSummonerLevel = findViewById(R.id.tvSecondSummonerLevelInt);
+        secondSummonerIcon = findViewById(R.id.ivSecondSummonerIcon);
 
 
         setupOrianna();
@@ -47,8 +49,6 @@ public class SummonersInfoActivity extends AppCompatActivity {
 
         String firstSummoner = Parcels.unwrap(getIntent().getParcelableExtra("firstSummoner"));
         String secondSummoner = Parcels.unwrap(getIntent().getParcelableExtra("secondSummoner"));
-
-
 
 
         getSummonerName(firstSummoner, firstSummonerName);
@@ -76,7 +76,7 @@ public class SummonersInfoActivity extends AppCompatActivity {
         }
         String imageUri = ori.summonerIconUrl;
         String [] new_URI = imageUri.split(":",2);
-        String final_url="https:"+ new_URI[1];                   // needs htttps to work
+        String final_url="https:"+ new_URI[1];                   // needs https to work
         Picasso.with(this).load(final_url).into(etSummonericon);
     }
     private void getSummonerName(String summoner, TextView etSummonerName) {
@@ -99,6 +99,7 @@ public class SummonersInfoActivity extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        Log.i(TAG, String.valueOf(ori.summonerLevel));
         etSummonerLevel.setText(String.valueOf(ori.summonerLevel));
     }
 

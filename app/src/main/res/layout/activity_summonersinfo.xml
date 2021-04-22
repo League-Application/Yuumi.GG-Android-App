@@ -1,141 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rvRelativeLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent" >
 
-    <TableLayout
-        android:id="@+id/table"
+    <ImageView
+        android:id="@+id/ivSecondSummonerIcon"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="275dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvSecondSummonerRankedSolo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_below="@+id/tvFirstSummonerName"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="275dp"
+        android:layout_toEndOf="@+id/ivFirstSummonerIcon"
+        android:textSize="20sp"
+        tools:text="Platinum IV" />
 
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="7dp">
+    <TextView
+        android:id="@+id/tvSecondSummonerLP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvFirstSummonerName"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="275dp"
+        android:layout_toEndOf="@+id/tvFirstSummonerRankedSolo"
+        android:textSize="20sp"
+        tools:text="59 LP" />
 
+    <TextView
+        android:id="@+id/tvSecondSummonerLevelTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivFirstSummonerIcon"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="275dp"
+        android:text="Level:" />
 
-        <TableRow
-            android:id="@+id/tableRow"
-            android:layout_width="wrap_content"
-            android:layout_height="114dp">
-            
+    <TextView
+        android:id="@+id/tvSecondSummonerLevelInt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivFirstSummonerIcon"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="275dp"
+        android:layout_toEndOf="@+id/tvFirstSummonerLevelTitle"
+        tools:text="243" />
 
+    <TextView
+        android:id="@+id/tvSecondSummonerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="275dp"
+        android:layout_toEndOf="@+id/ivSecondSummonerIcon"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        tools:text="Summoner Name" />
 
-            <ImageView
-                android:id="@+id/ivFirstSummonerIcon"
-                android:layout_width="wrap_content"
-                android:layout_height="240dp"
-                android:layout_marginStart="2dp"
-                tools:srcCompat="@tools:sample/avatars" />
+    <TextView
+        android:id="@+id/tvFirstSummonerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/ivFirstSummonerIcon"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        tools:text="Summoner Name" />
 
-            <ImageView
-                android:id="@+id/ivSecondSummonerIcon"
-                android:layout_width="wrap_content"
-                android:layout_height="240dp"
-                android:layout_marginEnd="2dp"
+    <ImageView
+        android:id="@+id/ivFirstSummonerIcon"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        tools:srcCompat="@tools:sample/avatars" />
 
+    <TextView
+        android:id="@+id/tvFirstSummonerRankedSolo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvFirstSummonerName"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/ivFirstSummonerIcon"
+        android:textSize="20sp"
+        tools:text="Platinum IV" />
 
-                tools:srcCompat="@tools:sample/avatars" />
+    <TextView
+        android:id="@+id/tvFirstSummonerLP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvFirstSummonerName"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/tvFirstSummonerRankedSolo"
+        android:textSize="20sp"
+        tools:text="59 LP" />
 
-        </TableRow>
+    <TextView
+        android:id="@+id/tvFirstSummonerLevelTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivFirstSummonerIcon"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:text="Level:" />
 
+    <TextView
+        android:id="@+id/tvFirstSummonerLevelInt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivFirstSummonerIcon"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/tvFirstSummonerLevelTitle"
+        tools:text="243" />
 
-        <TableRow
-            android:id="@+id/tableRow1"
-            android:layout_width="wrap_content"
-            android:layout_height="114dp"
-            android:layout_marginStart="2dp">
-
-
-            <TextView
-                android:id="@+id/tvFirstSummonerName"
-
-                android:layout_height="29dp"
-                android:layout_marginTop="2dp"
-                android:background="@color/teal_700"
-                android:text="First Summoner Name" />
-
-            <TextView
-                android:id="@+id/tvSecondSummonerName"
-                android:layout_height="29dp"
-                android:layout_marginTop="2dp"
-                android:background="@color/teal_200"
-                android:text="Second Summoner Name" />
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow2"
-            android:layout_width="wrap_content"
-            android:layout_height="114dp">
-
-
-            <TextView
-                android:id="@+id/tvSummonerLevelInt"
-                android:layout_width="224dp"
-                android:layout_height="29dp"
-                android:layout_marginTop="2dp"
-                android:text="Level: " />
-
-
-            <TextView
-                android:id="@+id/tvSecondSummonerLevelInt"
-                android:layout_width="224dp"
-                android:layout_height="29dp"
-                android:layout_marginTop="2dp"
-                android:text="Level: " />
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow3"
-            android:layout_width="wrap_content"
-            android:layout_height="114dp">
-
-            <TextView
-                android:id="@+id/tvSummonerRank"
-                android:layout_width="224dp"
-                android:layout_height="29dp"
-                android:layout_marginTop="2dp"
-                android:text="Rank" />
-
-
-            <TextView
-                android:id="@+id/tvSecondSummonerRank"
-                android:layout_width="224dp"
-                android:layout_height="29dp"
-                android:layout_marginTop="2dp"
-                android:text="Rank" />
-
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow4"
-            android:layout_width="wrap_content"
-            android:layout_height="114dp">
-
-
-            <TextView
-                android:id="@+id/tvSummonerLP"
-                android:layout_width="224dp"
-                android:layout_height="29dp"
-                android:layout_marginTop="2dp"
-                android:text="LP" />
-
-
-            <TextView
-                android:id="@+id/tvSecondSummonerLP"
-                android:layout_width="224dp"
-                android:layout_height="29dp"
-                android:layout_marginTop="2dp"
-                android:text="LP" />
-
-
-        </TableRow>
-
-
-
-    </TableLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
