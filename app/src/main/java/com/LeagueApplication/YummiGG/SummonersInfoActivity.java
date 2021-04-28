@@ -1,5 +1,6 @@
 package com.LeagueApplication.YummiGG;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -67,7 +68,7 @@ public class SummonersInfoActivity extends AppCompatActivity {
     }
 
     private void getSummonerIcon(String summoner, ImageView etSummonericon) {
-        OriannaHandler ori = new OriannaHandler(summoner);
+        OriannaHandler ori = new OriannaHandler(summoner, false);
         ori.start();
         try {
             ori.join();
@@ -80,7 +81,7 @@ public class SummonersInfoActivity extends AppCompatActivity {
         Picasso.with(this).load(final_url).into(etSummonericon);
     }
     private void getSummonerName(String summoner, TextView etSummonerName) {
-        OriannaHandler ori = new OriannaHandler(summoner);
+        OriannaHandler ori = new OriannaHandler(summoner, false);
         ori.start();
         try {
             ori.join();
@@ -92,7 +93,7 @@ public class SummonersInfoActivity extends AppCompatActivity {
     }
 
     private void getSummonerLevel(String summoner, TextView etSummonerLevel) {
-        OriannaHandler ori = new OriannaHandler(summoner);
+        OriannaHandler ori = new OriannaHandler(summoner, false);
         ori.start();
         try {
             ori.join();
@@ -104,7 +105,7 @@ public class SummonersInfoActivity extends AppCompatActivity {
     }
 
     private void getSummonerRankedSolo(String summoner, TextView etSummonerRank, TextView etSummonerLP) {
-        OriannaHandler ori = new OriannaHandler(summoner);
+        OriannaHandler ori = new OriannaHandler(summoner, false);
         ori.start();
         try {
             ori.join();
@@ -112,8 +113,20 @@ public class SummonersInfoActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         //Log.i(TAG, String.valueOf(ori.summonerRankedSolo.getLeaguePoints()));
-        etSummonerRank.setText(String.valueOf(ori.summonerRankedSolo.getTier()).substring(0, 1) + String.valueOf(ori.summonerRankedSolo.getTier()).substring(1).toLowerCase() + " " + ori.summonerRankedSolo.getDivision());
-        etSummonerLP.setText(ori.summonerRankedSolo.getLeaguePoints() + " LP");
+        try { //attempt to grab rank
+            etSummonerRank.setText(String.valueOf(ori.summonerRankedSolo.getTier()).substring(0, 1) + String.valueOf(ori.summonerRankedSolo.getTier()).substring(1).toLowerCase() + " " + ori.summonerRankedSolo.getDivision());
+            etSummonerLP.setText(ori.summonerRankedSolo.getLeaguePoints() + " LP");
+        }
+        catch (Exception e) { // if it can't grab a rank, it must be unranked
+            Log.e(TAG, "Must be unranked...");
+            etSummonerRank.setText("Unranked");
+            etSummonerLP.setText("0 LP");
+        }
+    }
+
+    @Override
+    public void onBackPressed() { //override back button
+        startActivity(new Intent(this, MainActivity.class)); //restart main method fresh
     }
 
 }

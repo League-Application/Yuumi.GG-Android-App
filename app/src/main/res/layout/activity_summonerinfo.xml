@@ -70,4 +70,10 @@
         android:layout_toEndOf="@+id/tvSummonerLevelTitle"
         tools:text="243" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMatches"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="125dp" />
+
 </RelativeLayout>

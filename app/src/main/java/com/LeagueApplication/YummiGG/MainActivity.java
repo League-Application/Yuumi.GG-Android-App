@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this, SummonerInfoActivity.class);
         i.putExtra("Summoner", Parcels.wrap(summoner));
         startActivity(i);
+        finish(); //closes activity
     }
 
     private void searchSummoners(List<String> summoners) {
@@ -76,5 +77,6 @@ public class MainActivity extends AppCompatActivity {
         i.putExtra("firstSummoner", Parcels.wrap(summoners.get(0)));
         i.putExtra("secondSummoner", Parcels.wrap(summoners.get(1)));
         startActivity(i);
+        finish(); //closes activity
     }
 }
