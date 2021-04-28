@@ -125,4 +125,8 @@ GIFS of Progress on Sprint 1:
 
 <img src='Untitled.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
+#### 5. Sprint 3:
+[X] Added persistence to user searching so that summoner stays on reload.<br>
+[X] Added more in depth stats retrieved and reworked summoner info with recyclerview
 
+<img src='Untitled.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
