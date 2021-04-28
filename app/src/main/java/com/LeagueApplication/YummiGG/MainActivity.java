@@ -1,63 +1,130 @@
 package com.LeagueApplication.YummiGG;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.content.Intent;
 import android.os.Bundle;
+import org.apache.commons.io.FileUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
+
 import org.parceler.Parcels;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private final String TAG = "MainActivity";                         // tag for Log
-    private EditText etFirstSummonerName, etSecondSummonerName;  // text inputs
+    EditText etFirstSummonerName, etSecondSummonerName;  // text inputs
     private Button btnCompareSummoners;
     private ImageButton btnSearchFirstSummoner, btnSearchSecondSummoner;
+    RecyclerView rvRecent;
     public List<String> summoners =  new ArrayList<String>();
+
+    List<String> recents;
+    recentsAdapter recentsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        loadItems();
+        rvRecent = findViewById(R.id.rvRecents);
+
+
+
+
         etFirstSummonerName = findViewById(R.id.etFirstSummonerName);             // reference variables to xml elements
         etSecondSummonerName = findViewById(R.id.etSecondSummonerName);
 
         btnSearchFirstSummoner = findViewById(R.id.imgBtnSearchFirstSummoner);
 
-        btnSearchFirstSummoner.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                searchSummoner(etFirstSummonerName.getText().toString());
+        recentsAdapter = new recentsAdapter(recents);
+        rvRecent.setAdapter(recentsAdapter);
+        rvRecent.setLayoutManager(new LinearLayoutManager(this));
+
+
+        btnSearchFirstSummoner.setOnClickListener(v -> {
+            if (!searchRecents(etFirstSummonerName.getText().toString())) {
+                System.out.println("**" + etFirstSummonerName.getText().toString() + "**");
+                recents.add(etFirstSummonerName.getText().toString());
+                Toast.makeText(getApplicationContext(), etFirstSummonerName.getText().toString() + " added", Toast.LENGTH_SHORT).show();
             }
+            else {
+                System.out.println("//" + etFirstSummonerName.getText().toString() + "//");
+                shiftUp(etFirstSummonerName.getText().toString());
+                Toast.makeText(getApplicationContext(), etFirstSummonerName.getText().toString() + " shifted", Toast.LENGTH_SHORT).show();
+            }
+            recentsAdapter.notifyDataSetChanged();
+            saveItems();
+            searchSummoner(etFirstSummonerName.getText().toString());
         });
 
         btnSearchSecondSummoner = findViewById(R.id.imgBtnSearchSecondSummoner);
 
-        btnSearchSecondSummoner.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                searchSummoner(etSecondSummonerName.getText().toString());
+        btnSearchSecondSummoner.setOnClickListener(v -> {
+
+            if (!searchRecents(etSecondSummonerName.getText().toString())) {
+                recents.add(etSecondSummonerName.getText().toString());
+                Toast.makeText(getApplicationContext(), etSecondSummonerName.getText().toString() + " added", Toast.LENGTH_SHORT).show();
             }
+            else {
+                shiftUp(etSecondSummonerName.getText().toString());
+                Toast.makeText(getApplicationContext(), etSecondSummonerName.getText().toString() + " shifted", Toast.LENGTH_SHORT).show();
+            }
+            recentsAdapter.notifyDataSetChanged();
+            saveItems();
+            searchSummoner(etSecondSummonerName.getText().toString());
         });
 
         btnCompareSummoners = findViewById(R.id.btnCompareSummoners);
 
-        btnCompareSummoners.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                summoners.add(etFirstSummonerName.getText().toString());        //TODO add better summoners handling
-                summoners.add(etSecondSummonerName.getText().toString());
-                Log.i(TAG,etFirstSummonerName.getText().toString());
-                Log.i(TAG,etSecondSummonerName.getText().toString());
-                searchSummoners(summoners);
+        btnCompareSummoners.setOnClickListener(v -> {
+            summoners.add(etFirstSummonerName.getText().toString());        //TODO add better summoners handling
+            summoners.add(etSecondSummonerName.getText().toString());
+            Log.i(TAG,etFirstSummonerName.getText().toString());
+            Log.i(TAG,etSecondSummonerName.getText().toString());
+
+            if (!searchRecents(etFirstSummonerName.getText().toString())) {
+                recents.add(etFirstSummonerName.getText().toString());
+                Toast.makeText(getApplicationContext(), etFirstSummonerName.getText().toString() + " added", Toast.LENGTH_SHORT).show();
             }
+            else {
+                shiftUp(etFirstSummonerName.getText().toString());
+                Toast.makeText(getApplicationContext(), etFirstSummonerName.getText().toString() + " shifted", Toast.LENGTH_SHORT).show();
+            }
+
+            if (!searchRecents(etSecondSummonerName.getText().toString())) {
+                recents.add(etSecondSummonerName.getText().toString());
+                Toast.makeText(getApplicationContext(), etSecondSummonerName.getText().toString() + " added", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                shiftUp(etSecondSummonerName.getText().toString());
+                Toast.makeText(getApplicationContext(), etSecondSummonerName.getText().toString() + " shifted", Toast.LENGTH_SHORT).show();
+            }
+            recentsAdapter.notifyDataSetChanged();
+            saveItems();
+            searchSummoners(summoners);
         });
+
+    }
+
+    private void shiftUp(String firstText) {
+        int temp = recents.indexOf(firstText);
+        if (temp >= 0) {
+            recents.add(0, recents.remove(temp));
+        }
     }
 
     private void searchSummoner(String summoner) {
@@ -79,4 +146,60 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
         finish();
     }
+
+    boolean searchRecents(String summonerName) {
+        Log.i(TAG, "searchRecents() called with parameter: " + summonerName);
+        for (String b: recents) {
+            if (b.equals(summonerName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private File getDataFile() {
+        Log.i(TAG, "getDataFile() called");
+        return new File(getFilesDir(), "data.txt");
+    }
+
+    private void loadItems() {
+        try {
+            Log.i(TAG, "loadItems() called");
+            Log.i(TAG, "Finding recents");
+
+            recents = new ArrayList<>(FileUtils.readLines(getDataFile(), String.valueOf(Charset.defaultCharset())));
+            for (String b : recents) {
+                Log.i(TAG, b);
+            }
+        } catch (IOException e) {
+            Log.e("MainActivity.java", "error reading items", e);
+            recents = new ArrayList<>();
+        }
+    }
+
+    //saves by writing into file
+    private void saveItems() {
+        try {
+            FileUtils.writeLines(getDataFile(), recents);
+            Log.i(TAG, "saveItems() called");
+        } catch (IOException e) {
+            Log.e("MainActivity.java", "error writing items", e);
+        }
+    }
 }
+
+/*
+    loop through recents
+        if the name is found,
+            move it to the top
+            break;
+
+
+
+
+
+
+
+
+
+ */

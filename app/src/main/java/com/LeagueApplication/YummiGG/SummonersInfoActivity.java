@@ -128,6 +128,6 @@ public class SummonersInfoActivity extends AppCompatActivity {
     public void onBackPressed() { //override back button
         startActivity(new Intent(this, MainActivity.class)); //restart main method fresh
     }
-    
+
 
 }

@@ -64,4 +64,24 @@
         app:layout_constraintTop_toBottomOf="@+id/imgBtnSearchFirstSummoner"
         app:srcCompat="@android:drawable/ic_menu_search" />
 
+    <TextView
+        android:id="@+id/tvRecent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Recent Searches"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etSecondSummonerName"
+        app:layout_constraintTop_toBottomOf="@+id/btnCompareSummoners" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvRecents"
+        android:layout_width="301dp"
+        android:layout_height="420dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.272"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="280dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
