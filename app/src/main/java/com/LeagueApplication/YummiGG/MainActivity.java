@@ -12,9 +12,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.parceler.Parcels;
+import org.w3c.dom.Text;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,14 +27,14 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private final String TAG = "MainActivity";                         // tag for Log
-    EditText etFirstSummonerName, etSecondSummonerName;  // text inputs
-    private Button btnCompareSummoners;
+    private EditText etFirstSummonerName, etSecondSummonerName;  // text inputs
+    private Button btnCompareSummoners, btnClear;
     private ImageButton btnSearchFirstSummoner, btnSearchSecondSummoner;
-    RecyclerView rvRecent;
+    private RecyclerView rvRecent;
     public List<String> summoners =  new ArrayList<String>();
 
-    List<String> recents;
-    recentsAdapter recentsAdapter;
+    private List<String> recents;
+    private recentsAdapter recentsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +42,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         loadItems();
-        rvRecent = findViewById(R.id.rvRecents);
 
+        rvRecent = findViewById(R.id.rvRecents);
+        btnClear = findViewById(R.id.btnClear);
 
 
 
@@ -50,42 +53,60 @@ public class MainActivity extends AppCompatActivity {
 
         btnSearchFirstSummoner = findViewById(R.id.imgBtnSearchFirstSummoner);
 
-        recentsAdapter = new recentsAdapter(recents);
-        rvRecent.setAdapter(recentsAdapter);
         rvRecent.setLayoutManager(new LinearLayoutManager(this));
-
-
-        btnSearchFirstSummoner.setOnClickListener(v -> {
-            if (!searchRecents(etFirstSummonerName.getText().toString())) {
-                System.out.println("**" + etFirstSummonerName.getText().toString() + "**");
-                recents.add(etFirstSummonerName.getText().toString());
-                Toast.makeText(getApplicationContext(), etFirstSummonerName.getText().toString() + " added", Toast.LENGTH_SHORT).show();
+        recentsAdapter.OnClickListener onClickListener = position -> {
+            String temp = recents.get(position);
+            if (etFirstSummonerName.getText().toString().isEmpty()) {
+                etFirstSummonerName.setText(temp, TextView.BufferType.EDITABLE);
+                Log.i(TAG, "Plugin first");
+            }
+            else if (etSecondSummonerName.getText().toString().isEmpty()) {
+                etSecondSummonerName.setText(temp, TextView.BufferType.EDITABLE);
+                Log.i(TAG, "Plugin second");
             }
             else {
-                System.out.println("//" + etFirstSummonerName.getText().toString() + "//");
-                shiftUp(etFirstSummonerName.getText().toString());
-                Toast.makeText(getApplicationContext(), etFirstSummonerName.getText().toString() + " shifted", Toast.LENGTH_SHORT).show();
+                Log.i(TAG, "Both full");
             }
-            recentsAdapter.notifyDataSetChanged();
-            saveItems();
-            searchSummoner(etFirstSummonerName.getText().toString());
+
+
+        };
+        recentsAdapter = new recentsAdapter(recents, onClickListener);
+        rvRecent.setAdapter(recentsAdapter);
+
+        btnClear.setOnClickListener(v -> {
+            clearRecents();
+        });
+
+        btnSearchFirstSummoner.setOnClickListener(v -> {
+            if (!etIsEmpty(etFirstSummonerName)) {
+                if (!searchRecents(etFirstSummonerName.getText().toString())) {
+                    notInList(etFirstSummonerName.getText().toString());
+                } else {
+                    inList(etFirstSummonerName.getText().toString());
+                }
+                saveItems();
+                searchSummoner(etFirstSummonerName.getText().toString());
+            }
+            else {
+                Toast.makeText(getApplicationContext(), "Please enter a name (1)" , Toast.LENGTH_SHORT).show();
+            }
         });
 
         btnSearchSecondSummoner = findViewById(R.id.imgBtnSearchSecondSummoner);
 
         btnSearchSecondSummoner.setOnClickListener(v -> {
-
-            if (!searchRecents(etSecondSummonerName.getText().toString())) {
-                recents.add(etSecondSummonerName.getText().toString());
-                Toast.makeText(getApplicationContext(), etSecondSummonerName.getText().toString() + " added", Toast.LENGTH_SHORT).show();
+            if(!etIsEmpty(etSecondSummonerName)) {
+                if (!searchRecents(etSecondSummonerName.getText().toString())) {
+                    notInList(etSecondSummonerName.getText().toString());
+                } else {
+                    inList(etSecondSummonerName.getText().toString());
+                }
+                saveItems();
+                searchSummoner(etSecondSummonerName.getText().toString());
             }
             else {
-                shiftUp(etSecondSummonerName.getText().toString());
-                Toast.makeText(getApplicationContext(), etSecondSummonerName.getText().toString() + " shifted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Please enter a name (2)" , Toast.LENGTH_SHORT).show();
             }
-            recentsAdapter.notifyDataSetChanged();
-            saveItems();
-            searchSummoner(etSecondSummonerName.getText().toString());
         });
 
         btnCompareSummoners = findViewById(R.id.btnCompareSummoners);
@@ -95,29 +116,51 @@ public class MainActivity extends AppCompatActivity {
             summoners.add(etSecondSummonerName.getText().toString());
             Log.i(TAG,etFirstSummonerName.getText().toString());
             Log.i(TAG,etSecondSummonerName.getText().toString());
+            if (!etIsEmpty(etFirstSummonerName) && !etIsEmpty(etSecondSummonerName)) {
+                if (!searchRecents(etFirstSummonerName.getText().toString())) {
+                    notInList(etFirstSummonerName.getText().toString());
+                } else {
+                    inList(etFirstSummonerName.getText().toString());
+                }
 
-            if (!searchRecents(etFirstSummonerName.getText().toString())) {
-                recents.add(etFirstSummonerName.getText().toString());
-                Toast.makeText(getApplicationContext(), etFirstSummonerName.getText().toString() + " added", Toast.LENGTH_SHORT).show();
+                if (!searchRecents(etSecondSummonerName.getText().toString())) {
+                    notInList(etSecondSummonerName.getText().toString());
+                } else {
+                    inList(etSecondSummonerName.getText().toString());
+                }
+                saveItems();
+                searchSummoners(summoners);
             }
             else {
-                shiftUp(etFirstSummonerName.getText().toString());
-                Toast.makeText(getApplicationContext(), etFirstSummonerName.getText().toString() + " shifted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Please fill both fields." , Toast.LENGTH_SHORT).show();
             }
-
-            if (!searchRecents(etSecondSummonerName.getText().toString())) {
-                recents.add(etSecondSummonerName.getText().toString());
-                Toast.makeText(getApplicationContext(), etSecondSummonerName.getText().toString() + " added", Toast.LENGTH_SHORT).show();
-            }
-            else {
-                shiftUp(etSecondSummonerName.getText().toString());
-                Toast.makeText(getApplicationContext(), etSecondSummonerName.getText().toString() + " shifted", Toast.LENGTH_SHORT).show();
-            }
-            recentsAdapter.notifyDataSetChanged();
-            saveItems();
-            searchSummoners(summoners);
         });
 
+
+    }
+
+    private void inList(String in) {
+        int ini = recents.indexOf(in);
+        shiftUp(in);
+        recentsAdapter.notifyItemMoved(ini, 0);
+        Toast.makeText(getApplicationContext(), in + " shifted", Toast.LENGTH_SHORT).show();
+    }
+
+    private void notInList(String in) {
+        recents.add(in);
+        recentsAdapter.notifyItemInserted(recents.size()-1);
+        shiftUp(in);
+        recentsAdapter.notifyItemMoved(recents.size()-1 , 0);
+        Toast.makeText(getApplicationContext(), in + " added", Toast.LENGTH_SHORT).show();
+    }
+
+    private boolean etIsEmpty(EditText in) {
+        return (in.getText().toString().isEmpty());
+    }
+
+    private void clearRecents() {
+        recents.clear();
+        recentsAdapter.notifyDataSetChanged();
     }
 
     private void shiftUp(String firstText) {

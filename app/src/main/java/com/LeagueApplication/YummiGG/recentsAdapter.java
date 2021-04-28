@@ -1,9 +1,12 @@
 package com.LeagueApplication.YummiGG;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,36 +15,49 @@ import java.util.List;
 
 public class recentsAdapter extends RecyclerView.Adapter<recentsAdapter.ViewHolder> {
     List<String> recents;
+    OnClickListener clickListener;
+    Context context;
 
-    public recentsAdapter(List<String> recents) {
+    public interface OnClickListener {
+        void onItemClicked(int position);
+    }
+
+    public recentsAdapter(List<String> recents, OnClickListener clickListener) {
         this.recents = recents;
+        this.clickListener = clickListener;
     }
 
     @NonNull
     @Override
-    public recentsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View todoView = LayoutInflater.from(parent.getContext()).inflate(android.R.layout.simple_list_item_1, parent, false);
-
-        return new ViewHolder(todoView);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(android.R.layout.simple_list_item_1, parent, false);
+        return new ViewHolder(view, context);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull recentsAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.bind(recents.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return recents.size();
     }
+
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvItem;
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            tvItem = itemView.findViewById(android.R.id.text1);
+        TextView tvRecentItem;
+        Context context;
+
+        public ViewHolder(View view, Context context) {
+            super(view);
+            this.context = context;
+            tvRecentItem = view.findViewById(android.R.id.text1);
         }
-        public void bind(String item){
-            tvItem.setText(item);
+        public void bind(String in) {
+            tvRecentItem.setText(in);
+            tvRecentItem.setOnClickListener(v -> clickListener.onItemClicked(getAdapterPosition()));
         }
     }
+
+
 }
