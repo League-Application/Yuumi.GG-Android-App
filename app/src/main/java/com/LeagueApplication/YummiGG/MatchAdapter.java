@@ -30,6 +30,8 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder>{
     private String TAG= "MatchAdapter";
     Context context;
     List<Match> matches;
+    double bestKDa = 0.0;
+    Match bestMatch;
 
     public MatchAdapter(Context context, List<Match> matches) {
         this.context = context;
@@ -88,6 +90,7 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder>{
                 tvMatchResult.setText("Victory");
             }
             else if(match.isRemake()){
+                tvMatchResult.setTextColor(Color.parseColor("#9A000000"));
                 tvMatchResult.setText("Remake");
             }
             else{
@@ -100,6 +103,8 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder>{
             assists = String.valueOf(match.getParticipants().get(0).getStats().getAssists());
             tvMatchKDA.setText(kills + " / " + deaths + " / " + assists);
 
+            Log.i(TAG, String.valueOf(match.getCreationTime()));
+            //TimeFormatter.getTimeDifference()
 
 
             final String[] matchChampionIcon = new String[1];
