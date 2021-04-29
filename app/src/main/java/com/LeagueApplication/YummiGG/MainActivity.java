@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         btnSearchFirstSummoner = findViewById(R.id.imgBtnSearchFirstSummoner);
 
         rvRecent.setLayoutManager(new LinearLayoutManager(this));
+
         recentsAdapter.OnClickListener onClickListener = position -> {
             String temp = recents.get(position);
             if (etFirstSummonerName.getText().toString().isEmpty()) {
@@ -230,19 +231,3 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
-
-/*
-    loop through recents
-        if the name is found,
-            move it to the top
-            break;
-
-
-
-
-
-
-
-
-
- */
