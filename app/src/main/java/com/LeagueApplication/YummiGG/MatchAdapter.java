@@ -95,7 +95,25 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder>{
 
             //Log.i(TAG, match.getParticipants().get(0).getChampion().getImage().getFull());
 
-            //Glide.with(context).load(match.getParticipants().get(0).getChampion().getImage().getURL()).into(ivChampionIcon); //TODO fix
+            final String[] matchChampionIcon = new String[1];
+            Thread thread = new Thread(){
+
+                public void run(){
+                    String originalURL = match.getParticipants().get(0).getChampion().getImage().getURL();
+                    String finalURL = originalURL.substring(0,4) + "s" + originalURL.substring(4);
+                    matchChampionIcon[0] = finalURL;
+                    Log.i(TAG,matchChampionIcon[0]);
+                }
+            };
+
+            thread.start();
+            try {
+                thread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            Glide.with(context).load(matchChampionIcon[0]).into(ivChampionIcon);
         }
     }
 }
