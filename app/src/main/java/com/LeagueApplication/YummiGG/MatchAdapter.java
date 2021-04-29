@@ -1,7 +1,9 @@
 package com.LeagueApplication.YummiGG;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.LeagueApplication.YummiGG.R.color;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.merakianalytics.orianna.types.core.match.Match;
@@ -60,31 +63,35 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder>{
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView tvMatchResult, tvMatchKDA, tvMatchType;
-        ImageView ivChampionIcon;
+        ImageView ivChampionIcon, ivSummonerSpellD, ivSummonerSpellF;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tvMatchResult = itemView.findViewById(R.id.tvMatchResult);
             tvMatchType = itemView.findViewById(R.id.tvMatchType);
-            tvMatchKDA= itemView.findViewById(R.id.tvMatchKDA);
-            ivChampionIcon= itemView.findViewById(R.id.ivChampionIcon);
+            tvMatchKDA = itemView.findViewById(R.id.tvMatchKDA);
+            ivChampionIcon = itemView.findViewById(R.id.ivChampionIcon);
+            ivSummonerSpellD = itemView.findViewById(R.id.ivSummonerSpellD);
+            ivSummonerSpellF = itemView.findViewById(R.id.ivSummonerSpellF);
         }
 
         public void bind(Match match) {
-            //Log.i(TAG, String.valueOf(matches));
-            tvMatchType.setText(match.getQueue().name());
-
+            if(match.getQueue().name() == "RANKED_SOLO"){
+                tvMatchType.setText("Ranked Solo");
+            }
 
             //Win or Loss logic
 
             if(match.getParticipants().get(0).getStats().isWinner()){
+                tvMatchResult.setTextColor(Color.parseColor("#1F81CF"));
                 tvMatchResult.setText("Victory");
             }
             else if(match.isRemake()){
                 tvMatchResult.setText("Remake");
             }
             else{
+                tvMatchResult.setTextColor(Color.parseColor("#FFCF1F42"));
                 tvMatchResult.setText("Defeat");
             }
             String kills, deaths, assists;
@@ -93,16 +100,23 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder>{
             assists = String.valueOf(match.getParticipants().get(0).getStats().getAssists());
             tvMatchKDA.setText(kills + " / " + deaths + " / " + assists);
 
-            //Log.i(TAG, match.getParticipants().get(0).getChampion().getImage().getFull());
+
 
             final String[] matchChampionIcon = new String[1];
+            final String[] matchSummonersIcon = new String[2];
             Thread thread = new Thread(){
 
                 public void run(){
-                    String originalURL = match.getParticipants().get(0).getChampion().getImage().getURL();
-                    String finalURL = originalURL.substring(0,4) + "s" + originalURL.substring(4);
-                    matchChampionIcon[0] = finalURL;
-                    Log.i(TAG,matchChampionIcon[0]);
+                    String originalChampionIconURL = match.getParticipants().get(0).getChampion().getImage().getURL();
+                    matchChampionIcon[0] =  originalChampionIconURL.substring(0,4) + "s" + originalChampionIconURL.substring(4);
+                    //Log.i(TAG,matchChampionIcon[0]);
+
+                    String originalSummonerDURL = match.getParticipants().get(0).getSummonerSpellD().getImage().getURL();
+                    String originalSummonerFURL = match.getParticipants().get(0).getSummonerSpellF().getImage().getURL();
+
+                    //Summoner Spell D is index 0, Summoner Spell F is index 1
+                    matchSummonersIcon[0] = originalSummonerDURL.substring(0,4) + "s" + originalSummonerDURL.substring(4);
+                    matchSummonersIcon[1] = originalSummonerFURL.substring(0,4) + "s" + originalSummonerFURL.substring(4);
                 }
             };
 
@@ -114,6 +128,8 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder>{
             }
 
             Glide.with(context).load(matchChampionIcon[0]).into(ivChampionIcon);
+            Glide.with(context).load(matchSummonersIcon[0]).into(ivSummonerSpellD);
+            Glide.with(context).load(matchSummonersIcon[1]).into(ivSummonerSpellF);
         }
     }
 }

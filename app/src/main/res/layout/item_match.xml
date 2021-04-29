@@ -6,9 +6,19 @@
     android:layout_height="wrap_content">
 
     <ImageView
+        android:id="@+id/ivSummonerSpellF"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/ivSummonerSpellD"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/ivChampionIcon"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
         android:id="@+id/ivChampionIcon"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         tools:srcCompat="@tools:sample/avatars" />
@@ -20,8 +30,10 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
-        android:layout_toEndOf="@+id/ivChampionIcon"
+        android:layout_toEndOf="@+id/ivSummonerSpellD"
+        android:textColor="#CF1F42"
         android:textSize="20sp"
+        android:textStyle="bold"
         tools:text="Victory" />
 
     <TextView
@@ -31,7 +43,8 @@
         android:layout_below="@+id/tvMatchResult"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:layout_toEndOf="@+id/ivChampionIcon"
+        android:layout_toEndOf="@+id/ivSummonerSpellF"
+        android:textColor="#040404"
         android:textSize="20sp"
         tools:text="11/1/8" />
 
@@ -43,6 +56,17 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
+        android:textColor="#AB000000"
         android:textSize="12sp"
         tools:text="Ranked Solo" />
+
+    <ImageView
+        android:id="@+id/ivSummonerSpellD"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="7dp"
+        android:layout_toEndOf="@+id/ivChampionIcon"
+        tools:srcCompat="@tools:sample/avatars" />
 </RelativeLayout>
