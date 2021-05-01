@@ -69,4 +69,17 @@
         android:layout_marginTop="7dp"
         android:layout_toEndOf="@+id/ivChampionIcon"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvMatchCreationTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvMatchType"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:textColor="#8B000000"
+        android:textSize="10sp"
+        tools:text="5 hours ago" />
 </RelativeLayout>

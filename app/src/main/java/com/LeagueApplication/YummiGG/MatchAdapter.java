@@ -23,6 +23,9 @@ import com.merakianalytics.orianna.types.core.match.Match;
 import com.merakianalytics.orianna.types.core.match.Participant;
 import com.squareup.picasso.Picasso;
 
+import org.ocpsoft.prettytime.PrettyTime;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder>{
@@ -64,7 +67,7 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder>{
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView tvMatchResult, tvMatchKDA, tvMatchType;
+        TextView tvMatchResult, tvMatchKDA, tvMatchType, tvMatchCreationTime;
         ImageView ivChampionIcon, ivSummonerSpellD, ivSummonerSpellF;
 
         public ViewHolder(@NonNull View itemView) {
@@ -73,6 +76,7 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder>{
             tvMatchResult = itemView.findViewById(R.id.tvMatchResult);
             tvMatchType = itemView.findViewById(R.id.tvMatchType);
             tvMatchKDA = itemView.findViewById(R.id.tvMatchKDA);
+            tvMatchCreationTime = itemView.findViewById(R.id.tvMatchCreationTime);
             ivChampionIcon = itemView.findViewById(R.id.ivChampionIcon);
             ivSummonerSpellD = itemView.findViewById(R.id.ivSummonerSpellD);
             ivSummonerSpellF = itemView.findViewById(R.id.ivSummonerSpellF);
@@ -103,8 +107,9 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder>{
             assists = String.valueOf(match.getParticipants().get(0).getStats().getAssists());
             tvMatchKDA.setText(kills + " / " + deaths + " / " + assists);
 
-            Log.i(TAG, String.valueOf(match.getCreationTime()));
-            //TimeFormatter.getTimeDifference()
+
+            PrettyTime timeFormatter = new PrettyTime();
+            tvMatchCreationTime.setText(timeFormatter.format(match.getCreationTime().toDate()));
 
 
             final String[] matchChampionIcon = new String[1];
