@@ -130,3 +130,5 @@ GIFS of Progress on Sprint 1:
 [X] Added more in depth stats retrieved and reworked summoner info with recyclerview
 
 <img src='Updated.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+<img src='https://i.imgur.com/BaQghZN.png' title='Video Walkthrough' width='' alt='Video Walkthrough' />
