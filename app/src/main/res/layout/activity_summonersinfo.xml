@@ -6,6 +6,59 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
+    <TextView
+        android:id="@+id/tvMatchKDAFirst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvMatchResultFirst"
+        android:layout_alignStart="@+id/tvMatchResultFirst"
+        android:layout_marginStart="-3dp"
+        android:layout_marginTop="10dp"
+        android:textColor="#040404"
+        android:textSize="20sp"
+        tools:text="11/1/8" />
+
+    <TextView
+        android:id="@+id/tvMatchKDASecond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvMatchResultSecond"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="11dp"
+        android:layout_toEndOf="@+id/ivChampionIconSecond"
+        android:textColor="#040404"
+        android:textSize="20sp"
+        tools:text="11/1/8" />
+
+    <TextView
+        android:id="@+id/tvMatchResultFirst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/ivChampionIconFirst"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="4dp"
+        android:layout_toEndOf="@+id/ivChampionIconFirst"
+        android:textColor="#BF3131"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:text="Victory" />
+
+    <TextView
+        android:id="@+id/tvMatchResultSecond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvMatchResultFirst"
+        android:layout_alignTop="@+id/ivChampionIconSecond"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="8dp"
+        android:textColor="#BF3131"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:text="Victory" />
+
     <ImageView
         android:id="@+id/ivSecondSummonerIcon"
         android:layout_width="75dp"
@@ -33,9 +86,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvFirstSummonerName"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="275dp"
-        android:layout_toEndOf="@+id/tvFirstSummonerRankedSolo"
+        android:layout_alignStart="@+id/tvFirstSummonerLP"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="272dp"
         android:textSize="20sp"
         tools:text="59 LP" />
 
@@ -134,5 +187,73 @@
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@+id/tvFirstSummonerLevelTitle"
         tools:text="243" />
+
+    <ImageView
+        android:id="@+id/ivChampionIconFirst"
+        android:layout_width="72dp"
+        android:layout_height="79dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="71dp"
+        android:layout_marginTop="138dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/ivChampionIconSecond"
+        android:layout_width="72dp"
+        android:layout_height="79dp"
+        android:layout_below="@+id/ivSecondSummonerIcon"
+        android:layout_alignStart="@+id/ivChampionIconFirst"
+        android:layout_marginStart="-2dp"
+        android:layout_marginTop="67dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvScoreFirst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvFirstSummonerLP"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="76dp"
+        android:layout_toEndOf="@+id/tvMatchResultFirst"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/tvScoreSecond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvSecondSummonerLP"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="39dp"
+        android:layout_marginTop="86dp"
+        android:layout_marginEnd="74dp"
+        android:layout_marginBottom="156dp"
+        android:layout_toEndOf="@+id/tvMatchResultSecond"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/tvBetterFirst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="33dp"
+        android:layout_toEndOf="@+id/tvFirstSummonerName" />
+
+    <TextView
+        android:id="@+id/tvBetterSecond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tvSecondSummonerName"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="25dp"
+        android:layout_toEndOf="@+id/tvSecondSummonerName" />
 
 </RelativeLayout>

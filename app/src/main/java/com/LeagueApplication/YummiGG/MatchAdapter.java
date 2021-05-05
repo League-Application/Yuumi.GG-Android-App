@@ -33,8 +33,6 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder>{
     private String TAG= "MatchAdapter";
     Context context;
     List<Match> matches;
-    double bestKDa = 0.0;
-    Match bestMatch;
 
     public MatchAdapter(Context context, List<Match> matches) {
         this.context = context;

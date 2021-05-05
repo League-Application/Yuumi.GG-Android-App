@@ -127,7 +127,7 @@ public class SummonerInfoActivity extends AppCompatActivity {
     }
 
     private List<Match> getMatches(String summoner) {
-        OriannaHandler ori = new OriannaHandler(summoner, 20);
+        OriannaHandler ori = new OriannaHandler(summoner, 10);
         ori.start();
         try {
             ori.join();
