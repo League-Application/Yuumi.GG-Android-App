@@ -132,5 +132,7 @@ GIFS of Progress on Sprint 1:
 <img src='Updated.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 ### 7. Sprint 4:
+[X] Compare summoner stats head to head and says who is better
+[X]
 
 <img src='https://i.imgur.com/BaQghZN.png' title='Video Walkthrough' width='' alt='Video Walkthrough' />
