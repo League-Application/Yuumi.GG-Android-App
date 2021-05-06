@@ -135,4 +135,4 @@ GIFS of Progress on Sprint 1:
 [X] Compare summoner stats head to head and says who is better.<br>
 [X] Added a clear button that will clear out persitance to previous users searched
 
-<img src='https://i.imgur.com/BaQghZN.png' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='Untitled4.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
