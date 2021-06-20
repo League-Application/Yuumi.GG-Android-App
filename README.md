@@ -30,7 +30,7 @@ Group #3 Project: Yuumi.GG League of Legends Statistics Comparison for Android
 **Required Must-have Stories**
 
 *[X] User can Enter their Summoner Name and have it parsed through RIOT's Api.<br>
-*User can recieve information about their games.<br>
+*User can receive information about their games.<br>
 *Names are persisted as recent searches.<br>
 *[X] User can enter another summoner and compare their stats head to head.<br>
 *User can view their recent 20 games or other Summoners 20 games.<br>
@@ -51,7 +51,7 @@ Group #3 Project: Yuumi.GG League of Legends Statistics Comparison for Android
 * [Summoner Data]
    * [*User can enter another summoner and compare their stats head to head]
 * [Head to Head Screen]
-   * [*User can recieve information about their games.]
+   * [*User can receive information about their games.]
 * [Summoner Data II (Extended Info)]
     * [*User can view their recent 20 games or other Summoners 20 games.]
    
@@ -133,6 +133,6 @@ GIFS of Progress on Sprint 1:
 
 ### 7. Sprint 4:
 [X] Compare summoner stats head to head and says who is better.<br>
-[X] Added a clear button that will clear out persitance to previous users searched
+[X] Added a clear button that will clear out persistence to previous users searched
 
 <img src='Untitled4.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
